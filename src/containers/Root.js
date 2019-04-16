@@ -53,7 +53,7 @@ export default class Root extends React.Component<Props, State> {
       .then(({ data: devices, status }) => {
         const objects = [];
 
-        if (R.equals(status, 200)) {
+        if (R.equals(status, 200) && R.not(R.isEmpty(devices))) {
           // eslint-disable-next-line
           R.map((device) => {
             // eslint-disable-next-line
@@ -80,9 +80,6 @@ export default class Root extends React.Component<Props, State> {
   render = () => {
     const { objects } = this.state;
     const { screen: { width, height } } = this.props;
-
-    // console.log('objects');
-    // console.log(objects);
 
     return (
       R.pipe(

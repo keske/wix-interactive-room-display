@@ -102,17 +102,20 @@ export default class Scene extends React.Component<Props, State> {
   animateObjects = () => {
     const { objects } = this.props;
 
+    // console.log(objects)
+
     // eslint-disable-next-line
     objects.map(({ animate }, index) => {
-      setTimeout(() => {
+      // eslint-disable-next-line
+      R.keys(animate).map((property) => {
         // eslint-disable-next-line
-        R.keys(animate).map((property) => {
-          // eslint-disable-next-line
-          R.keys(animate[property]).map((key) => {
+        R.keys(animate[property]).map((key) => {
+          // if (this.objects[index]) {
+            // console.log(this.objects[index][property][key])
             this.objects[index][property][key] = animate[property][key];
-          });
+          // }
         });
-      }, objects[index].timeOut || 0);
+      });
     });
   }
 
