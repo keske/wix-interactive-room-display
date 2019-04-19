@@ -12,7 +12,7 @@ type Props = {
 
 export default ({
   mouse,
-  size = 500,
+  size = window.innerHeight / 2,
 }: Props): React.Node => (
   <div>
     <style>
@@ -20,11 +20,12 @@ export default ({
         .root {
           position: 'absolute';
           zIndex: 1;
-          padding: 200px;
+          padding-top: ${(window.innerHeight / 2) - (size / 2)}px;
+          padding-left: ${(window.innerWidth / 2) - (size / 2)}px;
         }
         .wrap {
           perspective: ${size}px;
-          perspective-origin: 30% ${size / 2}px;
+          perspective-origin: 20% ${size / 2}px;
           // perspective: ${(mouse.x / 2)}px;
           // perspective-origin: ${(mouse.y / 20)}% ${size / 2}px;
           // transform: scale(${mouse.x / 800});
@@ -38,6 +39,8 @@ export default ({
           position: absolute;
           width: ${size}px;
           height: ${size}px;
+
+          // border: 1px solid red;
         }
         .back {
           transform: translateZ(-${size / 2}px) rotateY(180deg);
