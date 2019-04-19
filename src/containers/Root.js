@@ -5,8 +5,11 @@ import * as React from 'react';
 
 import axios from 'axios';
 
-// Components
+// Libs
 import { Scene, cube } from '../@libs/Three';
+
+// Components
+import Cube from '../components/Cube';
 
 // Types
 import type { Acceleration, Mouse, Screen } from '../types';
@@ -30,8 +33,8 @@ export default class Root extends React.Component<Props, State> {
       z: 0,
     },
     mouse: {
-      x: 0,
-      y: 0,
+      x: 600,
+      y: 600,
     },
     screen: {
       width: window.innerWidth,
@@ -44,7 +47,7 @@ export default class Root extends React.Component<Props, State> {
   }
 
   componentDidMount = () => {
-    this.timer = setInterval(() => this.fetchData(), 30);
+    // this.timer = setInterval(() => this.fetchData(), 30);
   }
 
   fetchData = () => {
@@ -79,7 +82,13 @@ export default class Root extends React.Component<Props, State> {
 
   render = () => {
     const { objects } = this.state;
-    const { screen: { width, height } } = this.props;
+    const {
+      mouse,
+      screen: {
+        width,
+        height,
+      },
+    } = this.props;
 
     return (
       R.pipe(
@@ -97,11 +106,15 @@ export default class Root extends React.Component<Props, State> {
                 </Scene>
               )
             }
+            <Cube {...{ mouse }} />
           </div>
         ),
       )({
         styles: {
           root: {
+            position: 'absolute',
+            zIndex: 1,
+
             backgroundColor: 'black',
             width,
             height,
