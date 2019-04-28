@@ -17,9 +17,6 @@ export default ({
   pitch,
 }: Props): React.Node => (
   <div>
-    {
-      console.log(pitch * 0.0001)
-    }
     <style>
       {`
         .root {
@@ -35,7 +32,7 @@ export default ({
           // perspective-origin: ${(mouse.y / 20)}% ${size / 2}px;
           // transform: scale(${mouse.x / 800});
           animation-duration: 750ms;
-          transform: scale(${pitch * 0.0001});
+          // transform: scale(${pitch * 0.0001});
         }
         .cube {
           position: relative;

@@ -15,6 +15,7 @@ import RightSide from '../components/RightSide';
 
 // Modules
 import Audio from '../modules/Audio';
+import Sample from '../modules/Sample';
 
 // Types
 import type { Acceleration, Mouse, Screen } from '../types';
@@ -66,13 +67,6 @@ export default class Root extends React.Component<Props, State> {
           R.map((device) => {
             // eslint-disable-next-line
             R.map(({ animate, render }) => {
-              // Cube
-              // if (R.equals(render.type, 'cube')) {
-              //   objects.push({
-              //     animate,
-              //     object: cube(),
-              //   });
-              // }
               // Lens
               if (R.equals(render.type, 'sphere')) {
                 objects.push({
@@ -120,15 +114,19 @@ export default class Root extends React.Component<Props, State> {
                 </div>
               )
             }
-            <Audio>
-              {
-                ({ pitch }) => (
-                  <Cube {...{ mouse, pitch }} />
-                )
-              }
-            </Audio>
+            {
+              // <Audio>
+              //   {
+              //     ({ pitch }) => (
+              //       <Cube {...{ mouse, pitch }} />
+              //     )
+              //   }
+              // </Audio>
+            }
+            <Cube {...{ mouse, pitch: 1 }} />
             <LeftSide />
             <RightSide />
+            <Sample />
           </div>
         ),
       )({

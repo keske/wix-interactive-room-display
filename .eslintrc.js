@@ -8,6 +8,7 @@ module.exports = {
     "fetch": true,
     "navigator": true,
     "window": true,
+    "WebSocket": true,
   },
   "parser": "babel-eslint",
     "extends": "airbnb/base",
