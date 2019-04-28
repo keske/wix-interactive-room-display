@@ -7,17 +7,20 @@ import colorMaterial from './colorMaterial';
 import refractionMatarial from './refractionMatarial';
 
 type Props = {
+  arc: number,
   color: string,
   images?: Array<string>,
   path?: string,
   radius: number,
   refraction?: boolean,
   refractionRatio?: number,
-  widthSegments: number,
-  heightSegments: number,
+  radialSegments: number,
+  tube: number,
+  tubularSegments: number,
 };
 
 export default ({
+  arc = Math.PI * 2,
   color = '#FFF',
   images = [
     'back.png',
@@ -29,16 +32,19 @@ export default ({
   ],
   path = 'http://localhost:4444/wix/common/',
   radius = 10,
+  radialSegments = 16,
   refraction = true,
   refractionRatio = 0.95,
-  widthSegments = 32,
-  heightSegments = 32,
+  tube = 3,
+  tubularSegments = 100,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.SphereBufferGeometry(
+    new THREE.TorusBufferGeometry(
       radius,
-      widthSegments,
-      heightSegments,
+      tube,
+      radialSegments,
+      tubularSegments,
+      arc,
     ),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })

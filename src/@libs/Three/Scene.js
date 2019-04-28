@@ -4,21 +4,47 @@ import * as R from 'ramda';
 import * as React from 'react';
 import * as THREE from 'three';
 
-// Types
-import type { Screen } from '../../types';
+type Acceleration = {
+  x: number,
+  y: number,
+  z: number,
+};
 
-type CameraConfig = {
+type Camera = {
   frustumVerticalFieldOfView: number,
   frustumAspectRatio: number,
   frustumNearPlane: number,
   frustumFarPlane: number,
+  position: {
+    x: number,
+    y: number,
+    z: number,
+  },
 };
 
+type Mouse = {
+  x: number,
+  y: number,
+};
+
+type Renderer = {
+  color: string | number,
+  opacity: number,
+  width: number,
+  height: number,
+}
+
 type Props = {
-  camera?: CameraConfig,
+  acceleration?: Acceleration,
+  camera?: Camera,
   children: any,
+  mouse?: Mouse;
   objects: Array<*>,
-  screen: Screen,
+  renderer?: Renderer,
+  screen?: {
+    width: number,
+    height: number,
+  },
 };
 
 type State = {
@@ -28,11 +54,35 @@ type State = {
 export default class Scene extends React.Component<Props, State> {
 
   static defaultProps = {
+    acceleration: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
     camera: {
       frustumVerticalFieldOfView: 75,
       frustumAspectRatio: (window.innerWidth / window.innerHeight),
       frustumNearPlane: 0.1,
       frustumFarPlane: 100000,
+      position: {
+        x: 0,
+        y: 0,
+        z: 300,
+      },
+    },
+    mouse: {
+      x: 0,
+      y: 0,
+    },
+    renderer: {
+      color: 0x000000,
+      opacity: 0,
+      width: window.innerWidth,
+      height: window.innerHeight,
+    },
+    screen: {
+      width: window.innerWidth,
+      height: window.innerHeight,
     },
   }
 
@@ -53,6 +103,11 @@ export default class Scene extends React.Component<Props, State> {
         frustumAspectRatio,
         frustumNearPlane,
         frustumFarPlane,
+        position: {
+          x,
+          y,
+          z,
+        },
       },
     } = this.props;
 
@@ -65,12 +120,16 @@ export default class Scene extends React.Component<Props, State> {
       )
     );
 
-    this.camera.position.z = 300;
+    this.camera.position.x = x;
+    this.camera.position.y = y;
+    this.camera.position.z = z;
   }
 
   setRendener = () => {
     const {
-      screen: {
+      renderer: {
+        color,
+        opacity,
         width,
         height,
       },
@@ -83,8 +142,7 @@ export default class Scene extends React.Component<Props, State> {
       })
     );
 
-    // this.renderer.setClearColor(0x000000, 0);
-    this.renderer.setClearColor('black');
+    this.renderer.setClearColor(color, opacity);
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(width, height);
   }
@@ -102,18 +160,13 @@ export default class Scene extends React.Component<Props, State> {
   animateObjects = () => {
     const { objects } = this.props;
 
-    // console.log(objects)
-
     // eslint-disable-next-line
     objects.map(({ animate }, index) => {
       // eslint-disable-next-line
       R.keys(animate).map((property) => {
         // eslint-disable-next-line
         R.keys(animate[property]).map((key) => {
-          // if (this.objects[index]) {
-            // console.log(this.objects[index][property][key])
-            this.objects[index][property][key] = animate[property][key];
-          // }
+          this.objects[index][property][key] = animate[property][key];
         });
       });
     });
@@ -177,6 +230,7 @@ export default class Scene extends React.Component<Props, State> {
   render = () => {
     const { loaded } = this.state;
     const {
+      children,
       screen: {
         width,
         height,
@@ -198,7 +252,7 @@ export default class Scene extends React.Component<Props, State> {
       >
         {
           loaded && (
-            this.props.children({
+            children({
               scene: this.scene,
             })
           )

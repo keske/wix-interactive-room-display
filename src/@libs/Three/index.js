@@ -1,4 +1,15 @@
-export { default as Scene } from './Scene';
+import Scene from './Scene';
 
-export { default as cube } from './cube';
-export { default as sphere } from './sphere';
+import cube from './cube';
+import sphere from './sphere';
+import tetrahedron from './tetrahedron';
+import torus from './torus';
+
+export default Scene;
+
+export {
+  cube,
+  sphere,
+  tetrahedron,
+  torus,
+};
