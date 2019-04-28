@@ -8,13 +8,18 @@ import type { MouseOrTouchPosition } from '../types';
 type Props = {
   mouse: MouseOrTouchPosition,
   size?: number,
+  pitch: any,
 };
 
 export default ({
   mouse,
   size = window.innerHeight / 2,
+  pitch,
 }: Props): React.Node => (
   <div>
+    {
+      console.log(pitch * 0.0001)
+    }
     <style>
       {`
         .root {
@@ -29,6 +34,8 @@ export default ({
           // perspective: ${(mouse.x / 2)}px;
           // perspective-origin: ${(mouse.y / 20)}% ${size / 2}px;
           // transform: scale(${mouse.x / 800});
+          animation-duration: 750ms;
+          transform: scale(${pitch * 0.0001});
         }
         .cube {
           position: relative;

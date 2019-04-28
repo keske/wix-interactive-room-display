@@ -13,6 +13,9 @@ import Cube from '../components/Cube';
 import LeftSide from '../components/LeftSide';
 import RightSide from '../components/RightSide';
 
+// Modules
+import Audio from '../modules/Audio';
+
 // Types
 import type { Acceleration, Mouse, Screen } from '../types';
 
@@ -49,12 +52,12 @@ export default class Root extends React.Component<Props, State> {
   }
 
   componentDidMount = () => {
-    this.timer = setInterval(() => this.fetchData(), 30);
+    // this.timer = setInterval(() => this.fetchData(), 30);
   }
 
   fetchData = () => {
     axios
-      .get('http://localhost:3030/')
+      .get('http://localhost:3031/')
       .then(({ data: devices, status }) => {
         const objects = [];
 
@@ -117,8 +120,14 @@ export default class Root extends React.Component<Props, State> {
                 </div>
               )
             }
+            <Audio>
+              {
+                ({ pitch }) => (
+                  <Cube {...{ mouse, pitch }} />
+                )
+              }
+            </Audio>
             <LeftSide />
-            <Cube {...{ mouse }} />
             <RightSide />
           </div>
         ),
