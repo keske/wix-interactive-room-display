@@ -73,22 +73,16 @@ export default ({
           transform: rotateX(90deg) translateY(${size / 2}px);
           transform-origin: bottom center;
         }
-        .front {
-          transform: translateZ(${size / 2}px);
-        }
       `}
     </style>
     <div className="root">
       <div className="wrap">
         <div className="cube">
-          {
-            // <div className="front">front</div>
-          }
           <div className="back">
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="https://payload.cargocollective.com/1/1/45123/13845407/CENTER_2.png"
+                src="http://localhost:4444/wix/common/back.png"
                 width={`${size}px`}
               />
             </div>
@@ -97,7 +91,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="https://payload.cargocollective.com/1/1/45123/13845407/UP.png"
+                src="http://localhost:4444/wix/common/top.png"
                 width={`${size}px`}
               />
             </div>
@@ -106,7 +100,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="https://payload.cargocollective.com/1/1/45123/13845407/DOWN.png"
+                src="http://localhost:4444/wix/common/bottom.png"
                 width={`${size}px`}
               />
             </div>
@@ -115,7 +109,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="https://payload.cargocollective.com/1/1/45123/13845407/LEFT_3.png"
+                src="http://localhost:4444/wix/common/left.png"
                 width={`${size}px`}
               />
             </div>
@@ -124,7 +118,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="https://payload.cargocollective.com/1/1/45123/13845407/RIGHT_4.png"
+                src="http://localhost:4444/wix/common/right.png"
                 width={`${size}px`}
               />
             </div>
