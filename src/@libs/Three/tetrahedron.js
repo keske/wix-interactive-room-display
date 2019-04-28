@@ -7,7 +7,7 @@ import colorMaterial from './colorMaterial';
 import refractionMatarial from './refractionMatarial';
 
 type Props = {
-  color: string,
+  color?: string,
   detail?: number,
   images?: Array<string>,
   path?: string,
@@ -27,7 +27,7 @@ export default ({
     'top.png',
     'bottom.png',
   ],
-  path = 'http://localhost:4444/wix/common/',
+  path = 'http://localhost:3030/cube/',
   radius = 10,
   refraction = true,
   refractionRatio = 0.95,

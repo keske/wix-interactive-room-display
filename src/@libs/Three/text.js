@@ -7,20 +7,32 @@ import colorMaterial from './colorMaterial';
 import refractionMatarial from './refractionMatarial';
 
 type Props = {
-  arc?: number,
+  bevelEnabled?: boolean,
+  bevelOffset?: number,
+  bevelSegments?: number,
+  bevelSize?: number,
+  bevelThickness?: number,
+  curveSegments?: number,
+  font: *,
   color?: string,
+  height?: number,
   images?: Array<string>,
   path?: string,
-  radius?: number,
   refraction?: boolean,
   refractionRatio?: number,
-  radialSegments?: number,
-  tube?: number,
-  tubularSegments?: number,
+  text?: string,
+  size?: number,
 };
 
 export default ({
-  arc = Math.PI * 2,
+  bevelEnabled = true,
+  bevelOffset = 0,
+  bevelSegments = 5,
+  bevelSize = 8,
+  bevelThickness = 10,
+  curveSegments = 12,
+  font,
+  height = 5,
   color = '#FFF',
   images = [
     'back.png',
@@ -31,21 +43,23 @@ export default ({
     'bottom.png',
   ],
   path = 'http://localhost:3030/cube/',
-  radius = 10,
-  radialSegments = 16,
   refraction = true,
   refractionRatio = 0.95,
-  tube = 3,
-  tubularSegments = 100,
+  text = 'Text',
+  size = 180,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.TorusBufferGeometry(
-      radius,
-      tube,
-      radialSegments,
-      tubularSegments,
-      arc,
-    ),
+    new THREE.TextGeometry(text, {
+      bevelEnabled,
+      bevelOffset,
+      bevelSegments,
+      bevelSize,
+      bevelThickness,
+      curveSegments,
+      font,
+      height,
+      size,
+    }),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })
       : colorMaterial({ color }),

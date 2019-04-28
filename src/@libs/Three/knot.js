@@ -7,20 +7,18 @@ import colorMaterial from './colorMaterial';
 import refractionMatarial from './refractionMatarial';
 
 type Props = {
-  arc?: number,
   color?: string,
   images?: Array<string>,
   path?: string,
   radius?: number,
+  radialSegments?: number,
   refraction?: boolean,
   refractionRatio?: number,
-  radialSegments?: number,
   tube?: number,
   tubularSegments?: number,
 };
 
 export default ({
-  arc = Math.PI * 2,
   color = '#FFF',
   images = [
     'back.png',
@@ -39,12 +37,11 @@ export default ({
   tubularSegments = 100,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.TorusBufferGeometry(
+    new THREE.TorusKnotGeometry(
       radius,
       tube,
-      radialSegments,
       tubularSegments,
-      arc,
+      radialSegments,
     ),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })
