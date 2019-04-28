@@ -6,7 +6,7 @@ import * as React from 'react';
 import axios from 'axios';
 
 // Libs
-import { Scene, cube } from '../@libs/Three';
+import Scene, { sphere } from '../@libs/Three';
 
 // Components
 import Cube from '../components/Cube';
@@ -47,7 +47,7 @@ export default class Root extends React.Component<Props, State> {
   }
 
   componentDidMount = () => {
-    // this.timer = setInterval(() => this.fetchData(), 30);
+    this.timer = setInterval(() => this.fetchData(), 30);
   }
 
   fetchData = () => {
@@ -62,10 +62,17 @@ export default class Root extends React.Component<Props, State> {
             // eslint-disable-next-line
             R.map(({ animate, render }) => {
               // Cube
-              if (R.equals(render.type, 'cube')) {
+              // if (R.equals(render.type, 'cube')) {
+              //   objects.push({
+              //     animate,
+              //     object: cube(),
+              //   });
+              // }
+              // Lens
+              if (R.equals(render.type, 'sphere')) {
                 objects.push({
                   animate,
-                  object: cube(),
+                  object: sphere(),
                 });
               }
             })(device.objects);
@@ -96,14 +103,16 @@ export default class Root extends React.Component<Props, State> {
           <div style={styles.root}>
             {
               R.not(R.isEmpty(objects)) && (
-                <Scene
-                  {...this.props}
-                  {...{ objects }}
-                >
-                  {
-                    (/* { scene } */) => false
-                  }
-                </Scene>
+                <div style={styles.scene}>
+                  <Scene
+                    {...this.props}
+                    {...{ objects }}
+                  >
+                    {
+                      (/* { scene } */) => false
+                    }
+                  </Scene>
+                </div>
               )
             }
             <Cube {...{ mouse }} />
@@ -118,6 +127,10 @@ export default class Root extends React.Component<Props, State> {
             backgroundColor: 'black',
             width,
             height,
+          },
+          scene: {
+            position: 'absolute',
+            zIndex: 10,
           },
         },
       })
