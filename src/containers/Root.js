@@ -10,6 +10,8 @@ import Scene, { sphere } from '../@libs/Three';
 
 // Components
 import Cube from '../components/Cube';
+import LeftSide from '../components/LeftSide';
+import RightSide from '../components/RightSide';
 
 // Types
 import type { Acceleration, Mouse, Screen } from '../types';
@@ -115,7 +117,9 @@ export default class Root extends React.Component<Props, State> {
                 </div>
               )
             }
+            <LeftSide />
             <Cube {...{ mouse }} />
+            <RightSide />
           </div>
         ),
       )({
