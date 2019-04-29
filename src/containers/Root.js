@@ -58,7 +58,11 @@ export default class Root extends React.Component<Props, State> {
 
   fetchData = () => {
     axios
-      .get('http://localhost:3031/')
+      .get(
+        process.env.NODE_ENV === 'production'
+          ? 'http://134.209.218.211:3070/'
+          : 'http://localhost:3070/',
+      )
       .then(({ data: devices, status }) => {
         const objects = [];
 

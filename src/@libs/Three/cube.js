@@ -25,7 +25,7 @@ export default ({
     'top.png',
     'bottom.png',
   ],
-  path = 'http://localhost:3030/cube/',
+  path = 'http://134.209.218.211:3070/cube/',
   refraction = true,
   refractionRatio = 0.95,
   size = 20,
