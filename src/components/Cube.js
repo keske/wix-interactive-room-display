@@ -86,7 +86,11 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
+<<<<<<< HEAD
                 src="http://localhost:3070/cube/back.png"
+=======
+                src="http://134.209.218.211:3070/cube/back.png"
+>>>>>>> efb67b9100ad69c7aaa4c0e5c5c9bc6556ced357
                 width={`${size}px`}
               />
             </div>
@@ -95,7 +99,11 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
+<<<<<<< HEAD
                 src="http://localhost:3070/cube/top.png"
+=======
+                src="http://134.209.218.211:3070/cube/top.png"
+>>>>>>> efb67b9100ad69c7aaa4c0e5c5c9bc6556ced357
                 width={`${size}px`}
               />
             </div>
@@ -104,7 +112,11 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
+<<<<<<< HEAD
                 src="http://localhost:3070/cube/bottom.png"
+=======
+                src="http://134.209.218.211:3070/cube/bottom.png"
+>>>>>>> efb67b9100ad69c7aaa4c0e5c5c9bc6556ced357
                 width={`${size}px`}
               />
             </div>
@@ -113,7 +125,11 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
+<<<<<<< HEAD
                 src="http://localhost:3070/cube/left.png"
+=======
+                src="http://134.209.218.211:3070/cube/left.png"
+>>>>>>> efb67b9100ad69c7aaa4c0e5c5c9bc6556ced357
                 width={`${size}px`}
               />
             </div>
@@ -122,7 +138,11 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
+<<<<<<< HEAD
                 src="http://localhost:3070/cube/right.png"
+=======
+                src="http://134.209.218.211:3070/cube/right.png"
+>>>>>>> efb67b9100ad69c7aaa4c0e5c5c9bc6556ced357
                 width={`${size}px`}
               />
             </div>

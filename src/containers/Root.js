@@ -80,7 +80,15 @@ export default class Root extends React.Component<Props, State> {
     const { geometry } = this.props;
 
     axios
+<<<<<<< HEAD
       .get('http://localhost:3070/')
+=======
+      .get(
+        process.env.NODE_ENV === 'production'
+          ? 'http://134.209.218.211:3070/'
+          : 'http://localhost:3070/',
+      )
+>>>>>>> efb67b9100ad69c7aaa4c0e5c5c9bc6556ced357
       .then(({ data: devices, status }) => {
         const objects = [];
 
