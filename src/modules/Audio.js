@@ -1,6 +1,5 @@
 // @flow
 
-// import * as R from 'ramda';
 import * as React from 'react';
 
 // Libs

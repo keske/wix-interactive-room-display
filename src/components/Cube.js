@@ -86,7 +86,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="http://localhost:4444/wix/common/back.png"
+                src="http://localhost:3070/cube/back.png"
                 width={`${size}px`}
               />
             </div>
@@ -95,7 +95,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="http://localhost:4444/wix/common/top.png"
+                src="http://localhost:3070/cube/top.png"
                 width={`${size}px`}
               />
             </div>
@@ -104,7 +104,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="http://localhost:4444/wix/common/bottom.png"
+                src="http://localhost:3070/cube/bottom.png"
                 width={`${size}px`}
               />
             </div>
@@ -113,7 +113,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="http://localhost:4444/wix/common/left.png"
+                src="http://localhost:3070/cube/left.png"
                 width={`${size}px`}
               />
             </div>
@@ -122,7 +122,7 @@ export default ({
             <div className="invert">
               <img
                 height={`${size}px`}
-                src="http://localhost:4444/wix/common/right.png"
+                src="http://localhost:3070/cube/right.png"
                 width={`${size}px`}
               />
             </div>

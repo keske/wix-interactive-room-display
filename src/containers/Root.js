@@ -53,12 +53,12 @@ export default class Root extends React.Component<Props, State> {
   }
 
   componentDidMount = () => {
-    // this.timer = setInterval(() => this.fetchData(), 30);
+    this.timer = setInterval(() => this.fetchData(), 30);
   }
 
   fetchData = () => {
     axios
-      .get('http://localhost:3031/')
+      .get('http://localhost:3070/')
       .then(({ data: devices, status }) => {
         const objects = [];
 
@@ -68,12 +68,12 @@ export default class Root extends React.Component<Props, State> {
             // eslint-disable-next-line
             R.map(({ animate, render }) => {
               // Lens
-              if (R.equals(render.type, 'sphere')) {
+              // if (R.equals(render.type, 'sphere')) {
                 objects.push({
                   animate,
                   object: sphere(),
                 });
-              }
+              // }
             })(device.objects);
           })(devices);
 
@@ -113,15 +113,6 @@ export default class Root extends React.Component<Props, State> {
                   </Scene>
                 </div>
               )
-            }
-            {
-              // <Audio>
-              //   {
-              //     ({ pitch }) => (
-              //       <Cube {...{ mouse, pitch }} />
-              //     )
-              //   }
-              // </Audio>
             }
             <Cube {...{ mouse, pitch: 1 }} />
             <LeftSide />
