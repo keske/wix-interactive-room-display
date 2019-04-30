@@ -53,7 +53,7 @@ export default class Root extends React.Component<Props, State> {
   }
 
   componentDidMount = () => {
-    // this.timer = setInterval(() => this.fetchData(), 30);
+    this.timer = setInterval(() => this.fetchData(), 30);
   }
 
   fetchData = () => {

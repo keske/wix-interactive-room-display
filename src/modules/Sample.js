@@ -5,7 +5,11 @@ import * as React from 'react';
 // Libs
 import Wad from 'web-audio-daw';
 
-const ws = new WebSocket('ws://192.168.1.2:8080/');
+const ws = new WebSocket(
+  process.env.REACT_APP_STAGE === 'production'
+    ? 'ws://134.209.218.211:8080/'
+    : 'ws://localhost:8080/',
+);
 
 type Props = any;
 
