@@ -8,17 +8,16 @@ import refractionMatarial from './refractionMatarial';
 
 type Props = {
   color?: string,
-  detail?: number,
   images?: Array<string>,
   path?: string,
   radius?: number,
   refraction?: boolean,
   refractionRatio?: number,
+  segments?: number,
 };
 
 export default ({
   color = '#FFF',
-  detail = 0,
   images = [
     'back.png',
     'back.png',
@@ -35,9 +34,13 @@ export default ({
   radius = 10,
   refraction = true,
   refractionRatio = 0.95,
+  segments = 32,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.TetrahedronGeometry(radius, detail),
+    new THREE.CircleGeometry(
+      radius,
+      segments,
+    ),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })
       : colorMaterial({ color }),

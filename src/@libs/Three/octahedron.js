@@ -37,7 +37,10 @@ export default ({
   refractionRatio = 0.95,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.TetrahedronGeometry(radius, detail),
+    new THREE.OctahedronGeometry(
+      radius,
+      detail,
+    ),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })
       : colorMaterial({ color }),

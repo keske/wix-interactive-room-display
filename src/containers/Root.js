@@ -6,7 +6,17 @@ import * as React from 'react';
 import axios from 'axios';
 
 // Libs
-import Scene, { sphere } from '../@libs/Three';
+import Scene, {
+  circle,
+  cone,
+  cube,
+  dodecahedron,
+  knot,
+  octahedron,
+  sphere,
+  tetrahedron,
+  torus,
+} from '../@libs/Three';
 
 // Components
 import Cube from '../components/Cube';
@@ -14,7 +24,6 @@ import LeftSide from '../components/LeftSide';
 import RightSide from '../components/RightSide';
 
 // Modules
-import Audio from '../modules/Audio';
 import Sample from '../modules/Sample';
 
 // Types
@@ -22,6 +31,7 @@ import type { Acceleration, Mouse, Screen } from '../types';
 
 type Props = {
   acceleration?: Acceleration,
+  geometry?: any,
   mouse?: Mouse,
   screen?: Screen,
 };
@@ -37,6 +47,16 @@ export default class Root extends React.Component<Props, State> {
       x: 0,
       y: 0,
       z: 0,
+    },
+    geometry: {
+      circle: circle(),
+      cone: cone(),
+      cube: cube(),
+      dodecahedron: dodecahedron(),
+      knot: knot(),
+      octahedron: octahedron(),
+      tetrahedron: tetrahedron(),
+      torus: torus(),
     },
     mouse: {
       x: 600,
@@ -57,6 +77,8 @@ export default class Root extends React.Component<Props, State> {
   }
 
   fetchData = () => {
+    const { geometry } = this.props;
+
     axios
       .get('http://localhost:3070/')
       .then(({ data: devices, status }) => {
@@ -67,13 +89,10 @@ export default class Root extends React.Component<Props, State> {
           R.map((device) => {
             // eslint-disable-next-line
             R.map(({ animate, render }) => {
-              // Lens
-              // if (R.equals(render.type, 'sphere')) {
-                objects.push({
-                  animate,
-                  object: sphere(),
-                });
-              // }
+              objects.push({
+                animate,
+                object: geometry[render.type],
+              });
             })(device.objects);
           })(devices);
 

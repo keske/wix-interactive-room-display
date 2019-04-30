@@ -8,17 +8,18 @@ import refractionMatarial from './refractionMatarial';
 
 type Props = {
   color?: string,
-  detail?: number,
+  height?: number,
   images?: Array<string>,
   path?: string,
   radius?: number,
+  radialSegments?: number,
   refraction?: boolean,
   refractionRatio?: number,
 };
 
 export default ({
   color = '#FFF',
-  detail = 0,
+  height = 20,
   images = [
     'back.png',
     'back.png',
@@ -33,11 +34,16 @@ export default ({
       : 'http://localhost:3070/cube/'
   ),
   radius = 10,
+  radialSegments = 32,
   refraction = true,
   refractionRatio = 0.95,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.TetrahedronGeometry(radius, detail),
+    new THREE.ConeGeometry(
+      radius,
+      height,
+      radialSegments,
+    ),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })
       : colorMaterial({ color }),

@@ -7,18 +7,33 @@ import colorMaterial from './colorMaterial';
 import refractionMatarial from './refractionMatarial';
 
 type Props = {
+  bevelEnabled?: boolean,
+  bevelOffset?: number,
+  bevelSegments?: number,
+  bevelSize?: number,
+  bevelThickness?: number,
+  curveSegments?: number,
+  font: *,
   color?: string,
-  detail?: number,
+  height?: number,
   images?: Array<string>,
   path?: string,
-  radius?: number,
   refraction?: boolean,
   refractionRatio?: number,
+  text?: string,
+  size?: number,
 };
 
 export default ({
+  bevelEnabled = true,
+  bevelOffset = 0,
+  bevelSegments = 5,
+  bevelSize = 8,
+  bevelThickness = 10,
+  curveSegments = 12,
+  font,
+  height = 5,
   color = '#FFF',
-  detail = 0,
   images = [
     'back.png',
     'back.png',
@@ -32,12 +47,23 @@ export default ({
       ? 'http://134.209.218.211:3070/cube/'
       : 'http://localhost:3070/cube/'
   ),
-  radius = 10,
   refraction = true,
   refractionRatio = 0.95,
+  text = 'Text',
+  size = 180,
 }: Props = {}): * => (
   new THREE.Mesh(
-    new THREE.TetrahedronGeometry(radius, detail),
+    new THREE.TextGeometry(text, {
+      bevelEnabled,
+      bevelOffset,
+      bevelSegments,
+      bevelSize,
+      bevelThickness,
+      curveSegments,
+      font,
+      height,
+      size,
+    }),
     refraction
       ? refractionMatarial({ images, path, refractionRatio })
       : colorMaterial({ color }),

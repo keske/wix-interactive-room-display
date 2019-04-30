@@ -7,16 +7,16 @@ import colorMaterial from './colorMaterial';
 import refractionMatarial from './refractionMatarial';
 
 type Props = {
-  arc: number,
-  color: string,
+  arc?: number,
+  color?: string,
   images?: Array<string>,
   path?: string,
-  radius: number,
+  radius?: number,
   refraction?: boolean,
   refractionRatio?: number,
-  radialSegments: number,
-  tube: number,
-  tubularSegments: number,
+  radialSegments?: number,
+  tube?: number,
+  tubularSegments?: number,
 };
 
 export default ({
@@ -30,7 +30,11 @@ export default ({
     'top.png',
     'bottom.png',
   ],
-  path = 'http://localhost:3070/cube/',
+  path = (
+    process.env.REACT_APP_STAGE === 'production'
+      ? 'http://134.209.218.211:3070/cube/'
+      : 'http://localhost:3070/cube/'
+  ),
   radius = 10,
   radialSegments = 16,
   refraction = true,
