@@ -28,7 +28,7 @@
     "flow-bin": "^0.86.0"
   },
   "scripts": {
-    "start": "REACT_APP_STAGE=development react-scripts start",
+    "start": "REACT_APP_STAGE=development PORT=4000 react-scripts start",
     "production": "REACT_APP_STAGE=production react-scripts start",
     "production:start": "REACT_APP_STAGE=production forever start server.js",
     "production:build": "REACT_APP_STAGE=production react-scripts build",

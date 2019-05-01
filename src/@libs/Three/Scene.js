@@ -67,7 +67,7 @@ export default class Scene extends React.Component<Props, State> {
       position: {
         x: 0,
         y: 0,
-        z: 300,
+        z: 150,
       },
     },
     mouse: {
